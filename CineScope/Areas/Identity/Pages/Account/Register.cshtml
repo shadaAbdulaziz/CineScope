@@ -1,0 +1,91 @@
+﻿@page
+@model RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<section class="auth-page">
+    <div class="auth-card">
+
+        <!-- Left side: welcome content -->
+        <div class="auth-info">
+            <p class="section-label">Join CineScope</p>
+
+            <h1>Create Your Account</h1>
+
+            <p>
+                Sign up to start your cinema journey, explore movies, and unlock more features in CineScope.
+            </p>
+
+            <div class="auth-highlight">
+                🍿 Build your account. Discover movies. Enjoy the CineScope experience.
+            </div>
+        </div>
+
+        <!-- Right side: register form -->
+        <div class="auth-form-box">
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+
+                <h2>Register</h2>
+                <p class="auth-form-subtitle">
+                    Create a new account to continue.
+                </p>
+
+                <!-- Shows validation errors -->
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <!-- Email input -->
+                <div class="mb-3">
+                    <label asp-for="Input.Email" class="form-label custom-label">Email</label>
+                    <input asp-for="Input.Email"
+                           class="form-control custom-input"
+                           autocomplete="username"
+                           aria-required="true"
+                           placeholder="name@example.com" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+                <!-- Password input -->
+                <div class="mb-3">
+                    <label asp-for="Input.Password" class="form-label custom-label">Password</label>
+                    <input asp-for="Input.Password"
+                           class="form-control custom-input"
+                           autocomplete="new-password"
+                           aria-required="true"
+                           placeholder="Enter your password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <!-- Confirm password input -->
+                <div class="mb-3">
+                    <label asp-for="Input.ConfirmPassword" class="form-label custom-label">Confirm Password</label>
+                    <input asp-for="Input.ConfirmPassword"
+                           class="form-control custom-input"
+                           autocomplete="new-password"
+                           aria-required="true"
+                           placeholder="Confirm your password" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+
+                <!-- Submit button -->
+                <button id="registerSubmit" type="submit" class="btn auth-main-btn">
+                    Register
+                </button>
+
+                <!-- Useful account links -->
+                <div class="auth-links">
+                    <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">
+                        Already have an account? Log in
+                    </a>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

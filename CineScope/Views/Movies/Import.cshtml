@@ -1,0 +1,106 @@
+﻿@model List<CineScope.Models.TmdbMovieResult>
+
+@{
+    ViewData["Title"] = "Import Movies";
+}
+
+<!-- Page header for importing movies from TMDB -->
+<section class="form-page-header">
+    <div>
+        <p class="section-label">TMDB API Integration</p>
+        <h1>Import Movies</h1>
+        <p class="page-subtitle">
+            Search for movies from TMDB and import selected movie data into CineScope.
+        </p>
+    </div>
+
+    <a asp-action="Index" class="btn back-btn">
+        Back to Movies
+    </a>
+</section>
+
+<!-- Search form -->
+<section class="movie-form-card">
+    <form asp-action="Import" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="row g-3 align-items-end">
+            <div class="col-md-9">
+                <label class="form-label custom-label">Movie Title</label>
+                <input type="text"
+                       name="query"
+                       value="@ViewBag.SearchQuery"
+                       class="form-control custom-input"
+                       placeholder="Search for a movie, e.g. Avatar, Inception..." />
+            </div>
+
+            <div class="col-md-3">
+                <button type="submit" class="btn save-btn w-100">
+                    Search
+                </button>
+            </div>
+        </div>
+
+        @if (ViewBag.Message != null)
+        {
+            <p class="text-danger mt-3">@ViewBag.Message</p>
+        }
+    </form>
+</section>
+
+@if (Model != null && Model.Any())
+{
+    <section class="import-results-section">
+        <h2>Search Results</h2>
+
+        <div class="row g-4">
+            @foreach (var movie in Model)
+            {
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card movie-card h-100">
+
+                        <div class="movie-poster-wrapper">
+                            <img src="@(string.IsNullOrEmpty(movie.PosterPath) ? "/images/no-poster.png" : "https://image.tmdb.org/t/p/w500" + movie.PosterPath)"
+                                 class="card-img-top movie-poster"
+                                 alt="@movie.Title" />
+
+                            <div class="movie-rating">
+                                ★ @movie.Rating.ToString("0.0")
+                            </div>
+                        </div>
+
+                        <div class="card-body movie-card-body">
+                            <h5 class="card-title movie-title">@movie.Title</h5>
+
+                            <p class="movie-meta">
+                                @(string.IsNullOrEmpty(movie.ReleaseDate) ? "Unknown year" : movie.ReleaseDate.Substring(0, 4))
+                            </p>
+
+                            <p class="movie-description">
+                                @movie.Overview
+                            </p>
+                        </div>
+
+                        <div class="card-footer movie-card-footer">
+                            <form asp-action="ImportMovie" method="post" class="w-100">
+                                @Html.AntiForgeryToken()
+
+                                <input type="hidden" name="TmdbId" value="@movie.TmdbId" />
+                                <input type="hidden" name="Title" value="@movie.Title" />
+                                <input type="hidden" name="Overview" value="@movie.Overview" />
+                                <input type="hidden" name="ReleaseDate" value="@movie.ReleaseDate" />
+                                <input type="hidden" name="PosterPath" value="@movie.PosterPath" />
+                                <input type="hidden" name="Rating" value="@movie.Rating" />
+
+                                <button type="submit" class="btn movie-btn details-btn w-100">
+                                    Import Movie
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+}

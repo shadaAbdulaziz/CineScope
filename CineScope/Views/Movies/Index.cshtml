@@ -1,0 +1,145 @@
+﻿@model IEnumerable<CineScope.Models.Movie>
+
+@{
+    ViewData["Title"] = "Movies";
+}
+
+
+<section class="movies-page-header">
+    <div>
+        <p class="section-label">CineScope Library</p>
+        <h1>Discover Movies</h1>
+        <p class="page-subtitle">
+            Browse and search your movie collection.
+        </p>
+    </div>
+
+    <!-- Add Movie button is visible only for Admin users -->
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="admin-movie-actions">
+            <a asp-action="Create" class="btn add-movie-btn">
+                + Add Movie
+            </a>
+
+            <a asp-action="Import" class="btn import-movie-btn">
+                Import Movie
+            </a>
+        </div>
+    }
+</section>
+
+<!-- Search and genre filter form -->
+<form asp-controller="Movies" asp-action="Index" method="get" class="movie-search-form">
+    <div class="input-group">
+
+        <!-- Search input: user can type a movie title -->
+        <input type="text"
+               name="searchString"
+               value="@ViewBag.SearchString"
+               class="form-control movie-search-input"
+               placeholder="Search by movie title..." />
+
+        <!-- Genre dropdown: user can filter movies by genre -->
+        <select name="movieGenre" class="form-select movie-genre-select">
+
+            <!-- Empty value means show all genres -->
+            <option value="">All Genres</option>
+
+            <!-- Loop through all genres coming from ViewBag.Genres -->
+            @foreach (var genre in ViewBag.Genres)
+            {
+                // Keep the selected genre selected after form submit
+                if (ViewBag.MovieGenre == genre)
+                {
+                    <option value="@genre" selected>@genre</option>
+                }
+                else
+                {
+                    <option value="@genre">@genre</option>
+                }
+            }
+        </select>
+
+        <!-- Submit button: sends search text and selected genre to Index action -->
+        <button type="submit" class="btn search-btn">
+            Search
+        </button>
+
+        <!-- Reset button: reloads the page without filters -->
+        <a asp-action="Index" class="btn reset-btn">
+            Reset
+        </a>
+
+    </div>
+</form>
+
+@if (!Model.Any())
+{
+    <div class="empty-movies">
+        <h3>No movies found</h3>
+
+        @if (User.IsInRole("Admin"))
+        {
+            <p>Try another search keyword or add your first movie.</p>
+        }
+        else
+        {
+            <p>Try another search keyword.</p>
+        }
+    </div>
+}
+else
+{
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 col-lg-4">
+                <div class="card movie-card h-100">
+
+                    <div class="movie-poster-wrapper">
+                        <img src="@(string.IsNullOrEmpty(item.PosterUrl) ? "/images/no-poster.png" : item.PosterUrl)"
+                             class="card-img-top movie-poster"
+                             alt="@item.Title" />
+
+                        <div class="movie-rating">
+                            ★ @item.Rating
+                        </div>
+                    </div>
+
+                    <div class="card-body movie-card-body">
+                        <h5 class="card-title movie-title">@item.Title</h5>
+
+                        <p class="movie-meta">
+                            @item.Genre • @item.ReleaseYear • @item.Duration min
+                        </p>
+
+                        <p class="movie-description">
+                            @item.Description
+                        </p>
+                    </div>
+
+                    <div class="card-footer movie-card-footer">
+                        <!-- Details is visible for everyone -->
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn movie-btn details-btn">
+                            Details
+                        </a>
+
+                        <!-- Edit and Delete are visible only for Admin users -->
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn movie-btn edit-btn">
+                                Edit
+                            </a>
+
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn movie-btn delete-btn">
+                                Delete
+                            </a>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+}

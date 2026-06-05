@@ -1,0 +1,105 @@
+﻿@model CineScope.Models.Movie
+
+@{
+    ViewData["Title"] = "Add Movie";
+}
+
+<!-- Page header for the Create Movie page -->
+<section class="form-page-header">
+    <div>
+        <p class="section-label">Movie Management</p>
+        <h1>Add New Movie</h1>
+        <p class="page-subtitle">
+            Add a new movie to your CineScope collection.
+        </p>
+    </div>
+
+    <!-- Back button to return to movies list -->
+    <a asp-action="Index" class="btn back-btn">
+        Back to Movies
+    </a>
+</section>
+
+<!-- Main form card -->
+<section class="movie-form-card">
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+
+        <!-- Shows model validation errors if there are any -->
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="row g-4">
+
+            <!-- Movie title input -->
+            <div class="col-md-6">
+                <label asp-for="Title" class="form-label custom-label"></label>
+                <input asp-for="Title" class="form-control custom-input" placeholder="Enter movie title" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <!-- Movie genre input -->
+            <div class="col-md-6">
+                <label asp-for="Genre" class="form-label custom-label"></label>
+                <input asp-for="Genre" class="form-control custom-input" placeholder="Action, Drama, Comedy..." />
+                <span asp-validation-for="Genre" class="text-danger"></span>
+            </div>
+
+            <!-- Release year input -->
+            <div class="col-md-4">
+                <label asp-for="ReleaseYear" class="form-label custom-label"></label>
+                <input asp-for="ReleaseYear" class="form-control custom-input" placeholder="2026" />
+                <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+            </div>
+
+            <!-- Rating input -->
+            <div class="col-md-4">
+                <label asp-for="Rating" class="form-label custom-label"></label>
+                <input asp-for="Rating" class="form-control custom-input" placeholder="8.5" />
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+
+            <!-- Duration input -->
+            <div class="col-md-4">
+                <label asp-for="Duration" class="form-label custom-label"></label>
+                <input asp-for="Duration" class="form-control custom-input" placeholder="120" />
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+
+            <!-- Poster URL input -->
+            <div class="col-md-12">
+                <label asp-for="PosterUrl" class="form-label custom-label"></label>
+                <!-- Movie poster upload input -->
+                <div class="col-md-12">
+                    <label class="form-label custom-label">Poster Image</label>
+                    <input type="file" name="posterFile" class="form-control custom-input" accept="image/*" />
+                    <span asp-validation-for="PosterUrl" class="text-danger"></span>
+                </div>                <span asp-validation-for="PosterUrl" class="text-danger"></span>
+            </div>
+
+            <!-- Movie description input -->
+            <div class="col-md-12">
+                <label asp-for="Description" class="form-label custom-label"></label>
+                <textarea asp-for="Description" class="form-control custom-input custom-textarea" rows="5" placeholder="Write a short movie description..."></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <!-- Form action buttons -->
+        <div class="form-actions">
+            <button type="submit" class="btn save-btn">
+                Create Movie
+            </button>
+
+            <a asp-action="Index" class="btn cancel-btn">
+                Cancel
+            </a>
+        </div>
+
+    </form>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

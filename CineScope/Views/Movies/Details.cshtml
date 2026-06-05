@@ -1,0 +1,106 @@
+﻿@model CineScope.Models.Movie
+
+@{
+    ViewData["Title"] = "Movie Details";
+}
+
+<!-- Page header for the Details page -->
+<section class="form-page-header">
+    <div>
+        <p class="section-label">Movie Details</p>
+        <h1>@Model.Title</h1>
+        <p class="page-subtitle">
+            View full information about this movie.
+        </p>
+    </div>
+
+    <!-- Back button to return to movies list -->
+    <a asp-action="Index" class="btn back-btn">
+        Back to Movies
+    </a>
+</section>
+
+<!-- Main details card -->
+<section class="movie-details-card">
+
+    <!-- Poster section -->
+    <div class="details-poster-box">
+        <img src="@(string.IsNullOrEmpty(Model.PosterUrl) ? "/images/no-poster.png" : Model.PosterUrl)"
+             alt="@Model.Title"
+             class="details-poster" />
+    </div>
+
+    <!-- Movie information section -->
+    <div class="details-content">
+
+        <!-- Movie title -->
+        <h2>@Model.Title</h2>
+
+        <!-- Movie metadata badges -->
+        <div class="details-badges">
+            <span class="details-badge">@Model.Genre</span>
+            <span class="details-badge">@Model.ReleaseYear</span>
+            <span class="details-badge">@Model.Duration min</span>
+            <span class="details-rating">★ @Model.Rating</span>
+        </div>
+
+        <!-- Movie description -->
+        <div class="details-section">
+            <h4>Description</h4>
+            <p>@Model.Description</p>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="details-actions">
+
+            <!-- Favorite buttons are visible only for logged-in users -->
+            @if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                if (ViewBag.IsFavorite == true)
+                {
+                    <form asp-action="RemoveFromFavorites" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="movieId" value="@Model.Id" />
+
+                        <button type="submit" class="btn favorite-remove-btn">
+                            Remove from Favorites
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <form asp-action="AddToFavorites" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="movieId" value="@Model.Id" />
+
+                        <button type="submit" class="btn favorite-add-btn">
+                            Add to Favorites
+                        </button>
+                    </form>
+                }
+            }
+            else
+            {
+                <a asp-area="Identity"
+                       asp-page="/Account/Login"
+                       class="btn favorite-add-btn">
+                    Login to Add Favorite
+                </a>
+            }
+
+            <!-- Edit button is visible only for Admin users -->
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn save-btn">
+                    Edit Movie
+                </a>
+            }
+
+            <a asp-action="Index" class="btn cancel-btn">
+                Back to List
+            </a>
+        </div>
+
+    </div>
+
+</section>

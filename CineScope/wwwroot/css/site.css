@@ -1,0 +1,1303 @@
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #0B0F19;
+    color: #F9FAFB;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.custom-navbar {
+    background-color: #080B12 !important;
+    min-height: 90px;
+    padding: 12px 35px;
+    border-bottom: 1px solid #1f2937 !important;
+}
+
+.site-logo {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+}
+
+.navbar-brand {
+    color: #F9FAFB !important;
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    z-index: 2;
+}
+
+.logo-red {
+    color: #E50914;
+}
+
+/* Center menu */
+.navbar-collapse {
+    justify-content: center;
+}
+
+.navbar-nav {
+    gap: 36px;
+}
+
+/* Menu links */
+.navbar .nav-link {
+    color: #F9FAFB !important;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    margin-left: 0;
+    padding: 10px 8px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+    .navbar .nav-link:hover {
+        color: #F5C518 !important;
+        transform: translateY(-2px);
+    }
+
+    .navbar .nav-link:focus {
+        color: #F5C518 !important;
+    }
+
+/* Keep logo on the left and menu exactly centered on desktop */
+@media (min-width: 768px) {
+    .navbar .container-fluid {
+        position: relative;
+    }
+
+    .navbar-brand {
+        position: absolute;
+        left: 35px;
+    }
+
+    .navbar-collapse {
+        width: 100%;
+    }
+}
+
+/* Mobile navbar */
+@media (max-width: 767px) {
+    .custom-navbar {
+        padding: 10px 18px;
+    }
+
+    .site-logo {
+        height: 55px;
+    }
+
+    .navbar .nav-link {
+        font-size: 1.1rem;
+        text-align: center;
+    }
+
+    .navbar-nav {
+        gap: 10px;
+        margin-top: 15px;
+    }
+}
+
+.container {
+    margin-top: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    color: #F9FAFB;
+}
+
+/* Footer */
+main {
+    flex: 1;
+}
+
+.page-content {
+    flex: 1;
+}
+
+.footer,
+.custom-footer {
+    position: static !important;
+    bottom: auto !important;
+    width: 100%;
+    background-color: #080B12;
+    border-top: 1px solid #1f2937;
+    color: #9CA3AF !important;
+    padding: 22px 0;
+    margin-top: 60px;
+}
+
+    .custom-footer a {
+        color: #E50914;
+        text-decoration: none;
+    }
+
+        .custom-footer a:hover {
+            color: #F5C518;
+        }
+
+/* Movies Page Header */
+.movies-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin: 35px 0 28px;
+    padding: 28px;
+    background: linear-gradient(135deg, #111827, #0B0F19);
+    border: 1px solid #1f2937;
+    border-radius: 22px;
+}
+
+.section-label {
+    color: #F5C518;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.movies-page-header h1 {
+    font-size: 2.6rem;
+    font-weight: 900;
+    margin: 0;
+}
+
+.page-subtitle {
+    color: #9CA3AF;
+    margin: 8px 0 0;
+    font-size: 1.05rem;
+}
+
+.add-movie-btn {
+    background-color: #E50914;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 22px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+    .add-movie-btn:hover {
+        background-color: #F5C518;
+        color: #111827;
+    }
+
+/* Search */
+.movie-search-form {
+    margin-bottom: 30px;
+}
+
+.movie-search-input {
+    background-color: #111827;
+    border: 1px solid #374151;
+    color: #F9FAFB;
+    padding: 13px 16px;
+}
+
+    .movie-search-input:focus {
+        background-color: #111827;
+        color: #F9FAFB;
+        border-color: #F5C518;
+        box-shadow: none;
+    }
+
+    .movie-search-input::placeholder {
+        color: #9CA3AF;
+    }
+
+.search-btn {
+    background-color: #E50914;
+    color: #fff;
+    border: 1px solid #E50914;
+    padding: 0 22px;
+    font-weight: 700;
+}
+
+    .search-btn:hover {
+        background-color: #B20710;
+        color: #fff;
+    }
+
+.reset-btn {
+    background-color: #111827;
+    color: #D1D5DB;
+    border: 1px solid #374151;
+    padding: 0 28px;
+    font-weight: 800;
+    font-size: 1.05rem;
+    border-radius: 0 12px 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .reset-btn:hover {
+        background-color: #F5C518;
+        color: #111827;
+        border-color: #F5C518;
+    }
+
+/* Genre dropdown style */
+.movie-genre-select {
+    max-width: 220px;
+    background-color: #111827;
+    border: 1px solid #374151;
+    color: #F9FAFB;
+    padding: 13px 16px;
+}
+
+    .movie-genre-select:focus {
+        background-color: #111827;
+        color: #F9FAFB;
+        border-color: #F5C518;
+        box-shadow: none;
+    }
+
+    .movie-genre-select option {
+        background-color: #111827;
+        color: #F9FAFB;
+    }
+
+/* Movie Cards */
+.movie-card {
+    background-color: #111827;
+    color: #F9FAFB;
+    border: 1px solid #1f2937;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .movie-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 18px 38px rgba(229, 9, 20, 0.25);
+    }
+
+.movie-poster-wrapper {
+    position: relative;
+    overflow: hidden;
+    background-color: #0B0F19;
+}
+
+.movie-poster {
+    height: 390px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.movie-card:hover .movie-poster {
+    transform: scale(1.05);
+}
+
+.movie-rating {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-color: #F5C518;
+    color: #111827;
+    font-weight: 900;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+}
+
+.movie-card-body {
+    padding: 20px;
+}
+
+.movie-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.movie-meta {
+    color: #9CA3AF;
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+}
+
+.movie-description {
+    color: #D1D5DB;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Card Footer Buttons */
+.movie-card-footer {
+    background-color: transparent;
+    border-top: 1px solid #1f2937;
+    display: flex;
+    gap: 8px;
+    padding: 16px 20px 20px;
+}
+
+.movie-btn {
+    flex: 1;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 8px 10px;
+}
+
+.details-btn {
+    background-color: #E50914;
+    color: #fff;
+}
+
+    .details-btn:hover {
+        background-color: #B20710;
+        color: #fff;
+    }
+
+.edit-btn {
+    background-color: #374151;
+    color: #fff;
+}
+
+    .edit-btn:hover {
+        background-color: #F5C518;
+        color: #111827;
+    }
+
+.delete-btn {
+    background-color: transparent;
+    color: #F9FAFB;
+    border: 1px solid #4B5563;
+}
+
+    .delete-btn:hover {
+        background-color: #7F1D1D;
+        color: #fff;
+        border-color: #7F1D1D;
+    }
+
+/* Empty State */
+.empty-movies {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 22px;
+    color: #D1D5DB;
+}
+
+    .empty-movies h3 {
+        color: #F9FAFB;
+    }
+
+/* Home Hero - image beside text */
+.hero-section {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 32px;
+    margin: 35px 0;
+    padding: 35px;
+    border-radius: 28px;
+    border: 1px solid #1f2937;
+    background: linear-gradient(135deg, #111827, #0B0F19);
+}
+
+.hero-text-side {
+    max-width: 620px;
+}
+
+.hero-label {
+    color: #F5C518;
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-text {
+    color: #D1D5DB;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 28px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.hero-primary-btn {
+    background-color: #E50914;
+    color: #fff;
+    border-radius: 999px;
+    padding: 13px 26px;
+    font-weight: 800;
+    border: none;
+}
+
+    .hero-primary-btn:hover {
+        background-color: #F5C518;
+        color: #111827;
+    }
+
+.hero-secondary-btn {
+    background-color: transparent;
+    color: #F9FAFB;
+    border: 1px solid #4B5563;
+    border-radius: 999px;
+    padding: 13px 26px;
+    font-weight: 800;
+}
+
+    .hero-secondary-btn:hover {
+        background-color: #374151;
+        color: #fff;
+    }
+
+.hero-image-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 520px;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 24px;
+    border: 1px solid #1f2937;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Home Features */
+.home-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin: 35px 0 60px;
+}
+
+.feature-card {
+    background-color: #111827;
+    border: 1px solid #1f2937;
+    border-radius: 22px;
+    padding: 28px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+    .feature-card:hover {
+        transform: translateY(-6px);
+        border-color: #F5C518;
+    }
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+}
+
+.feature-card h3 {
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #9CA3AF;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Create/Edit form page header */
+.form-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin: 35px 0 28px;
+    padding: 28px;
+    background: linear-gradient(135deg, #111827, #0B0F19);
+    border: 1px solid #263244;
+    border-radius: 22px;
+}
+
+/* Main form container - dark but separated from page background */
+.movie-form-card {
+    background: #111827;
+    border: 1px solid #263244;
+    border-radius: 22px;
+    padding: 32px;
+    margin-bottom: 60px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+}
+
+/* Form labels */
+.custom-label {
+    color: #F9FAFB;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* Input and textarea design - dark theme friendly */
+.custom-input {
+    background-color: #1F2937;
+    color: #F9FAFB;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 13px 15px;
+}
+
+    .custom-input:focus {
+        background-color: #1F2937;
+        color: #F9FAFB;
+        border-color: #F5C518;
+        box-shadow: 0 0 0 0.2rem rgba(245, 197, 24, 0.14);
+    }
+
+    .custom-input::placeholder {
+        color: #9CA3AF;
+    }
+
+/* Larger textarea for description */
+.custom-textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+/* Better validation error spacing */
+.text-danger {
+    font-size: 0.9rem;
+    margin-top: 5px;
+    display: block;
+}
+
+/* Buttons row */
+.form-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+}
+
+/* Main save/create button */
+.save-btn {
+    background-color: #E50914;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 26px;
+    font-weight: 800;
+}
+
+    .save-btn:hover {
+        background-color: #F5C518;
+        color: #111827;
+    }
+
+/* Cancel and Back buttons */
+.cancel-btn,
+.back-btn {
+    background-color: transparent;
+    color: #F9FAFB;
+    border: 1px solid #4B5563;
+    border-radius: 999px;
+    padding: 12px 24px;
+    font-weight: 700;
+}
+
+    .cancel-btn:hover,
+    .back-btn:hover {
+        background-color: #374151;
+        color: #fff;
+    }
+
+/* Responsive Movies Page */
+@media (max-width: 768px) {
+    .movies-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+        .movies-page-header h1 {
+            font-size: 2rem;
+        }
+
+    .add-movie-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .movie-card-footer {
+        flex-direction: column;
+    }
+
+    .movie-search-form .input-group {
+        flex-direction: column;
+    }
+
+    .movie-search-input,
+    .movie-genre-select,
+    .search-btn,
+    .reset-btn {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 10px !important;
+        margin-bottom: 10px;
+    }
+}
+
+/* Responsive Home Page */
+@media (max-width: 992px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        padding: 28px;
+    }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+        }
+
+    .hero-image {
+        max-width: 100%;
+        height: 280px;
+    }
+
+    .home-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Responsive Forms */
+@media (max-width: 768px) {
+    .form-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .movie-form-card {
+        padding: 24px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .save-btn,
+    .cancel-btn,
+    .back-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+/* Details page main layout */
+.movie-details-card {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 32px;
+    background-color: #111827;
+    border: 1px solid #263244;
+    border-radius: 24px;
+    padding: 32px;
+    margin-bottom: 60px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+}
+
+/* Poster container */
+.details-poster-box {
+    background-color: #0B0F19;
+    border: 1px solid #263244;
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+/* Movie poster image */
+.details-poster {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Details text content */
+.details-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+    /* Movie title */
+    .details-content h2 {
+        font-size: 2.6rem;
+        font-weight: 900;
+        margin-bottom: 18px;
+    }
+
+/* Badges row */
+.details-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+/* Regular badge */
+.details-badge {
+    background-color: #1F2937;
+    color: #D1D5DB;
+    border: 1px solid #374151;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+/* Rating badge */
+.details-rating {
+    background-color: #F5C518;
+    color: #111827;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-weight: 900;
+}
+
+/* Details sections */
+.details-section {
+    margin-bottom: 22px;
+}
+
+    .details-section h4 {
+        color: #F5C518;
+        font-size: 1rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+    }
+
+    .details-section p {
+        color: #D1D5DB;
+        line-height: 1.7;
+        font-size: 1.05rem;
+    }
+
+/* Long poster URL style */
+.poster-url-text {
+    word-break: break-all;
+    color: #9CA3AF !important;
+    font-size: 0.95rem !important;
+}
+
+/* Details action buttons */
+.details-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 10px;
+}
+
+/* Responsive details page */
+@media (max-width: 992px) {
+    .movie-details-card {
+        grid-template-columns: 1fr;
+    }
+
+    .details-poster {
+        height: 420px;
+    }
+
+    .details-content h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .details-actions {
+        flex-direction: column;
+    }
+}
+/* Edit page poster preview */
+.edit-poster-preview {
+    height: 190px;
+    width: auto;
+    max-width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    border: 1px solid #374151;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+/* Delete page header */
+.delete-header {
+    border-color: rgba(229, 9, 20, 0.35);
+}
+
+/* Delete confirmation layout */
+.delete-movie-card {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 32px;
+    background-color: #111827;
+    border: 1px solid #263244;
+    border-radius: 24px;
+    padding: 32px;
+    margin-bottom: 60px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+}
+
+/* Poster container */
+.delete-poster-box {
+    background-color: #0B0F19;
+    border: 1px solid #263244;
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+/* Poster image */
+.delete-poster {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Delete content area */
+.delete-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Warning box */
+.delete-warning {
+    background-color: rgba(127, 29, 29, 0.25);
+    border: 1px solid rgba(229, 9, 20, 0.45);
+    border-radius: 18px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+}
+
+    .delete-warning h2 {
+        color: #F87171;
+        font-weight: 900;
+        margin-bottom: 8px;
+    }
+
+    .delete-warning p {
+        color: #FECACA;
+        margin: 0;
+    }
+
+/* Movie title in delete page */
+.delete-content h3 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-bottom: 18px;
+}
+
+/* Delete buttons row */
+.delete-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 12px;
+}
+
+/* Confirm delete button */
+.confirm-delete-btn {
+    background-color: #E50914;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 26px;
+    font-weight: 800;
+}
+
+    .confirm-delete-btn:hover {
+        background-color: #7F1D1D;
+        color: #fff;
+    }
+
+/* Responsive delete page */
+@media (max-width: 992px) {
+    .delete-movie-card {
+        grid-template-columns: 1fr;
+    }
+
+    .delete-poster {
+        height: 420px;
+    }
+}
+
+@media (max-width: 768px) {
+    .delete-actions {
+        flex-direction: column;
+    }
+
+        .confirm-delete-btn,
+        .delete-actions .cancel-btn {
+            width: 100%;
+            text-align: center;
+        }
+}
+/* Login/Register navbar links */
+.auth-nav {
+    position: absolute;
+    right: 35px;
+    gap: 14px;
+}
+
+.auth-link {
+    color: #F9FAFB !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    text-decoration: none;
+}
+
+    .auth-link:hover {
+        color: #F5C518 !important;
+    }
+
+.auth-user {
+    color: #F5C518 !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+}
+
+.auth-link.btn-link {
+    padding: 10px 8px;
+    border: none;
+}
+
+@media (max-width: 767px) {
+    .auth-nav {
+        position: static;
+        margin-top: 12px;
+        text-align: center;
+    }
+}
+/* Identity pages: Login / Register */
+.identity-page,
+.row:has(form#account),
+.row:has(form#registerForm) {
+    margin-top: 35px;
+}
+
+/* Login/Register main form box */
+form#account,
+form#registerForm {
+    background-color: #111827;
+    border: 1px solid #263244;
+    border-radius: 24px;
+    padding: 32px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.38);
+}
+
+/* Identity page titles */
+form#account h2,
+form#registerForm h2,
+h1 {
+    color: #F9FAFB;
+}
+
+/* Labels */
+form#account label,
+form#registerForm label {
+    color: #F9FAFB;
+    font-weight: 700;
+}
+
+/* Inputs */
+form#account .form-control,
+form#registerForm .form-control {
+    background-color: #1F2937;
+    color: #F9FAFB;
+    border: 1px solid #374151;
+    border-radius: 12px;
+    padding: 13px 15px;
+}
+
+form#account .form-control:focus,
+form#registerForm .form-control:focus {
+    background-color: #1F2937;
+    color: #F9FAFB;
+    border-color: #F5C518;
+    box-shadow: 0 0 0 0.2rem rgba(245, 197, 24, 0.14);
+}
+
+/* Checkboxes */
+form#account .form-check-label {
+    color: #D1D5DB;
+}
+
+/* Buttons */
+form#account button[type="submit"],
+form#registerForm button[type="submit"] {
+    background-color: #E50914;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 26px;
+    font-weight: 800;
+    width: 100%;
+    margin-top: 12px;
+}
+
+form#account button[type="submit"]:hover,
+form#registerForm button[type="submit"]:hover {
+    background-color: #F5C518;
+    color: #111827;
+}
+
+/* Links */
+form#account a,
+form#registerForm a,
+.external-login-links a {
+    color: #F5C518;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+form#account a:hover,
+form#registerForm a:hover {
+    color: #E50914;
+}
+
+/* Validation messages */
+.validation-summary-errors,
+.text-danger {
+    color: #F87171 !important;
+}
+
+/* External login / right column text */
+section h3,
+section p,
+section label {
+    color: #F9FAFB;
+}
+
+section {
+    color: #D1D5DB;
+}
+/* Identity Authentication Pages */
+.auth-page {
+    min-height: calc(100vh - 220px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 45px 0 70px;
+}
+
+.auth-card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    gap: 32px;
+    background: linear-gradient(135deg, #111827, #0B0F19);
+    border: 1px solid #263244;
+    border-radius: 28px;
+    padding: 34px;
+    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.45);
+}
+
+.auth-info {
+    padding: 38px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(229, 9, 20, 0.35), rgba(127, 29, 29, 0.28)), #0B0F19;
+    border: 1px solid rgba(229, 9, 20, 0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+    .auth-info h1 {
+        font-size: 3rem;
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 18px;
+    }
+
+    .auth-info p {
+        color: #D1D5DB;
+        font-size: 1.08rem;
+        line-height: 1.7;
+    }
+
+.auth-highlight {
+    margin-top: 22px;
+    color: #F9FAFB;
+    font-weight: 800;
+    background-color: rgba(229, 9, 20, 0.22);
+    border: 1px solid rgba(229, 9, 20, 0.35);
+    border-radius: 18px;
+    padding: 16px 18px;
+}
+
+.auth-form-box {
+    background-color: #111827;
+    border: 1px solid #263244;
+    border-radius: 24px;
+    padding: 32px;
+}
+
+    .auth-form-box h2 {
+        font-size: 2rem;
+        font-weight: 900;
+        margin-bottom: 8px;
+    }
+
+.auth-form-subtitle {
+    color: #9CA3AF;
+    margin-bottom: 24px;
+}
+
+.auth-check-label {
+    color: #D1D5DB;
+    font-weight: 600;
+}
+
+.auth-main-btn {
+    width: 100%;
+    background-color: #E50914;
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 13px 26px;
+    font-weight: 900;
+    margin-top: 8px;
+}
+
+    .auth-main-btn:hover {
+        background-color: #F5C518;
+        color: #111827;
+    }
+
+.auth-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+    .auth-links a {
+        color: #F5C518;
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+        .auth-links a:hover {
+            color: #E50914;
+        }
+
+.form-check-input:checked {
+    background-color: #E50914;
+    border-color: #E50914;
+}
+
+@media (max-width: 992px) {
+    .auth-card {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-info {
+        padding: 28px;
+    }
+
+        .auth-info h1 {
+            font-size: 2.3rem;
+        }
+}
+
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 22px;
+    }
+
+    .auth-form-box {
+        padding: 24px;
+    }
+}
+.admin-movie-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.import-movie-btn {
+    background-color: #F5C518;
+    color: #111827;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 22px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+    .import-movie-btn:hover {
+        background-color: #E50914;
+        color: #fff;
+    }
+
+.hero-import-btn {
+    background-color: #F5C518;
+    color: #111827;
+    border: none;
+    border-radius: 999px;
+    padding: 13px 26px;
+    font-weight: 800;
+}
+
+    .hero-import-btn:hover {
+        background-color: #E50914;
+        color: #fff;
+    }
+
+/* Favorites buttons */
+.favorite-add-btn {
+    background-color: #F5C518;
+    color: #111827;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 24px;
+    font-weight: 800;
+}
+
+    .favorite-add-btn:hover {
+        background-color: #E50914;
+        color: #fff;
+    }
+
+.favorite-remove-btn {
+    background-color: transparent;
+    color: #F87171;
+    border: 1px solid #F87171;
+    border-radius: 999px;
+    padding: 12px 24px;
+    font-weight: 800;
+}
+
+    .favorite-remove-btn:hover {
+        background-color: #7F1D1D;
+        color: #fff;
+        border-color: #7F1D1D;
+    }
+
+.details-actions form {
+    display: inline-block;
+}

@@ -1,0 +1,96 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<section class="auth-page">
+    <div class="auth-card">
+
+        <!-- Left side: welcome content -->
+        <div class="auth-info">
+            <p class="section-label">Welcome Back</p>
+
+            <h1>Log in to CineScope</h1>
+
+            <p>
+                Access your account to manage movies, reviews, favorites, and your cinema experience.
+            </p>
+
+            <div class="auth-highlight">
+                🎬 Discover movies. Manage your collection. Explore stories.
+            </div>
+        </div>
+
+        <!-- Right side: login form -->
+        <div class="auth-form-box">
+            <form id="account" method="post">
+
+                <h2>Login</h2>
+                <p class="auth-form-subtitle">
+                    Enter your email and password to continue.
+                </p>
+
+                <!-- Shows validation errors -->
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                <!-- Email input -->
+                <div class="mb-3">
+                    <label asp-for="Input.Email" class="form-label custom-label">Email</label>
+                    <input asp-for="Input.Email"
+                           class="form-control custom-input"
+                           autocomplete="username"
+                           aria-required="true"
+                           placeholder="name@example.com" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+                <!-- Password input -->
+                <div class="mb-3">
+                    <label asp-for="Input.Password" class="form-label custom-label">Password</label>
+                    <input asp-for="Input.Password"
+                           class="form-control custom-input"
+                           autocomplete="current-password"
+                           aria-required="true"
+                           placeholder="Enter your password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <!-- Remember me checkbox -->
+                <div class="form-check mb-3">
+                    <input class="form-check-input" asp-for="Input.RememberMe" />
+                    <label asp-for="Input.RememberMe" class="form-check-label auth-check-label">
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+
+                <!-- Submit button -->
+                <button id="login-submit" type="submit" class="btn auth-main-btn">
+                    Log in
+                </button>
+
+                <!-- Useful account links -->
+                <div class="auth-links">
+                    <a id="forgot-password" asp-page="./ForgotPassword">
+                        Forgot your password?
+                    </a>
+
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">
+                        Create a new account
+                    </a>
+
+                    <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">
+                        Resend email confirmation
+                    </a>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

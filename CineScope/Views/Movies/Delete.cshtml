@@ -1,0 +1,77 @@
+﻿@model CineScope.Models.Movie
+
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+
+<!-- Page header for the Delete Movie page -->
+<section class="form-page-header delete-header">
+    <div>
+        <p class="section-label">Movie Management</p>
+        <h1>Delete Movie</h1>
+        <p class="page-subtitle">
+            Please confirm before deleting this movie from your CineScope collection.
+        </p>
+    </div>
+
+    <!-- Back button to return to movies list -->
+    <a asp-action="Index" class="btn back-btn">
+        Back to Movies
+    </a>
+</section>
+
+<!-- Delete confirmation card -->
+<section class="delete-movie-card">
+
+    <!-- Movie poster preview -->
+    <div class="delete-poster-box">
+        <img src="@(string.IsNullOrEmpty(Model.PosterUrl) ? "/images/no-poster.png" : Model.PosterUrl)"
+             alt="@Model.Title"
+             class="delete-poster" />
+    </div>
+
+    <!-- Movie information and delete confirmation -->
+    <div class="delete-content">
+
+        <!-- Warning message -->
+        <div class="delete-warning">
+            <h2>Are you sure?</h2>
+            <p>
+                This action will permanently delete this movie from the database.
+            </p>
+        </div>
+
+        <!-- Movie title -->
+        <h3>@Model.Title</h3>
+
+        <!-- Movie metadata -->
+        <div class="details-badges">
+            <span class="details-badge">@Model.Genre</span>
+            <span class="details-badge">@Model.ReleaseYear</span>
+            <span class="details-badge">@Model.Duration min</span>
+            <span class="details-rating">★ @Model.Rating</span>
+        </div>
+
+        <!-- Movie description -->
+        <div class="details-section">
+            <h4>Description</h4>
+            <p>@Model.Description</p>
+        </div>
+
+        <!-- Delete form -->
+        <form asp-action="Delete" method="post" class="delete-actions">
+            <!-- Hidden Id tells the controller which movie to delete -->
+            <input type="hidden" asp-for="Id" />
+
+            <button type="submit" class="btn confirm-delete-btn">
+                Delete Movie
+            </button>
+
+            <a asp-action="Index" class="btn cancel-btn">
+                Cancel
+            </a>
+        </form>
+
+    </div>
+
+</section>

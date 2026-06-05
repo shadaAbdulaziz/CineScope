@@ -1,0 +1,82 @@
+﻿@model IEnumerable<CineScope.Models.Movie>
+
+@{
+    ViewData["Title"] = "My Favorites";
+}
+
+<!-- Page header for user's favorite movies -->
+<section class="movies-page-header">
+    <div>
+        <p class="section-label">My Collection</p>
+        <h1>My Favorites</h1>
+        <p class="page-subtitle">
+            Movies you saved to your personal favorites list.
+        </p>
+    </div>
+
+    <a asp-action="Index" class="btn back-btn">
+        Back to Movies
+    </a>
+</section>
+
+@if (Model == null || !Model.Any())
+{
+    <div class="empty-movies">
+        <h3>No favorite movies yet</h3>
+        <p>Browse movies and add your favorite ones to see them here.</p>
+
+        <a asp-action="Index" class="btn add-movie-btn mt-3">
+            Browse Movies
+        </a>
+    </div>
+}
+else
+{
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-6 col-lg-4">
+                <div class="card movie-card h-100">
+
+                    <div class="movie-poster-wrapper">
+                        <img src="@(string.IsNullOrEmpty(item.PosterUrl) ? "/images/no-poster.png" : item.PosterUrl)"
+                             class="card-img-top movie-poster"
+                             alt="@item.Title" />
+
+                        <div class="movie-rating">
+                            ★ @item.Rating
+                        </div>
+                    </div>
+
+                    <div class="card-body movie-card-body">
+                        <h5 class="card-title movie-title">@item.Title</h5>
+
+                        <p class="movie-meta">
+                            @item.Genre • @item.ReleaseYear • @item.Duration min
+                        </p>
+
+                        <p class="movie-description">
+                            @item.Description
+                        </p>
+                    </div>
+
+                    <div class="card-footer movie-card-footer">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn movie-btn details-btn">
+                            Details
+                        </a>
+
+                        <form asp-action="RemoveFromFavorites" method="post" class="w-100">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="movieId" value="@item.Id" />
+
+                            <button type="submit" class="btn movie-btn delete-btn w-100">
+                                Remove
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+}

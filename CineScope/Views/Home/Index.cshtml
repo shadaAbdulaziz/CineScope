@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero-section">
+    <div class="hero-text-side">
+        <p class="hero-label">Welcome to CineScope</p>
+
+        <h1>Discover Movies. Explore Stories.</h1>
+
+        <p class="hero-text">
+            Browse your movie collection, search by title, and manage films with a modern cinema experience.
+        </p>
+
+        <div class="hero-actions">
+            <a asp-controller="Movies" asp-action="Index" class="btn hero-primary-btn">
+                Browse Movies
+            </a>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="Movies" asp-action="Create" class="btn hero-secondary-btn">
+                    Add New Movie
+                </a>
+
+                <a asp-controller="Movies" asp-action="Import" class="btn hero-import-btn">
+                    Import Movie
+                </a>
+            }
+        </div>
+    </div>
+
+    <div class="hero-image-side">
+        <img src="~/images/hero-bg.png" alt="Cinema Scene" class="hero-image" />
+    </div>
+</section>
+
+<section class="home-features">
+    <div class="feature-card">
+        <div class="feature-icon">🎬</div>
+        <h3>Movie Library</h3>
+        <p>View movies in a clean and modern card layout.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">🔎</div>
+        <h3>Smart Search</h3>
+        <p>Find movies quickly by searching their titles.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon">⭐</div>
+        <h3>Ratings</h3>
+        <p>Display movie ratings in a clear cinema-style design.</p>
+    </div>
+</section>
